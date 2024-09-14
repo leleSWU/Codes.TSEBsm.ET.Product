@@ -1,11 +1,11 @@
 pro calc_LEarea2_inputSdn_PT_xiugai,cosza
-  year = '2004'
-  dirin = file_search("Q:\G\Data_Input_prep_1°\LAI\2004\", "*.tif")         
-  dirin2 = file_search("Q:\G\Data_Input_instantaneous_daily_1°\t2m\2004\", "*.tiff")        
-  dirin3 = file_search('Q:\G\Data_Input_instantaneous_daily_1°\DEM\', "*.tif")       
+  year = ''
+  dirin = file_search("")         
+  dirin2 = file_search("")        
+  dirin3 = file_search('")       
   
-  model_input = "R:\G\Output\2004_new\output_TRIMS_mask"
-  output_d = 'R:\G\Output\2004_new\测试\IDL'
+  model_input = ""
+  output_d = ''
   
   dirin_HC = file_search(model_input + '\Hc_2004\', "*.tiff")   
   dirin_Hs = file_search(model_input + '\Hs_2004\', "*.tiff")  
@@ -17,9 +17,9 @@ pro calc_LEarea2_inputSdn_PT_xiugai,cosza
   dirout3 = output_d + '\daily\LE_C\'
   dirout4= output_d + '\daily\EF_C\'
 
-  dirin_Sdn = file_search( "Q:\G\Data_Input_instantaneous_daily_1°\ssrd\2004", "*.tiff")
-  dirin_landcover = "Q:\G\Data_Input_instantaneous_daily_1°\LandCover_MODIS\LandCover_MODIS_2004.tif"
-  dirin_landcover = "Q:\G\Data_Input_instantaneous_daily_1°\LandCover_MODIS_2\1\LC_Type1_2004_01_01.tif"
+  dirin_Sdn = file_search( "")
+  dirin_landcover = ""
+  dirin_landcover = ""
   dirout_LE=output_d + '\daily\LE\'
   dirout_Rn=output_d + '\daily\Rn\'
   dirout_Rn_c=output_d + '\daily\Rn_C\'
