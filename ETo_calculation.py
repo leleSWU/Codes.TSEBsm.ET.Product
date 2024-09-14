@@ -11,11 +11,11 @@ from time import *
 
 def main():
     year = 2016
-    daily_file_d = r"Q:\G\Data_Input_instantaneous_daily_1°"
-    t2m_max_min_d = r"H:\G\Data_EToF_Daily"
-    DNN_daily_ET = r"P:\G\Output\2016_new\DNN_ERA5_all_1000\LE"
-    out_d = r'P:\G\Output\2016_new\EToF_ERA5'
-    ssrd_list = np.array(glob.glob(r"Q:\G\Data_Input_instantaneous_daily_1°\ssrd\2010" + "\*.tiff"))
+    daily_file_d = r""
+    t2m_max_min_d = r""
+    DNN_daily_ET = r""
+    out_d = r''
+    ssrd_list = np.array(glob.glob(r""))
 
     t2m_list = np.array(glob.glob(daily_file_d + "\\t2m\\" + str(year) + "\*.tiff"))
     albedo_list = np.array(glob.glob(daily_file_d + "\\albedo\\" + str(year) + "\*.tiff"))
@@ -27,8 +27,8 @@ def main():
     ws_list = np.array(glob.glob(daily_file_d + "\\ws\\" + str(year) + "\*.tif"))
 
     DNN_daily_ET_list = np.array(glob.glob(DNN_daily_ET + "\*.tif"))
-    DEN_file = r"Q:\G\Data_Input_instantaneous_daily_1°\DEM\DEM_region.tif"
-    lat_file = r"Q:\G\Data_Input_instantaneous_daily_1°\lat\lat_pre_73.0_55.0_135.0_16.0.tif"
+    DEN_file = r""
+    lat_file = r""
     DEM = gdal.Open(DEN_file).ReadAsArray()
     lat = gdal.Open(lat_file).ReadAsArray()
 
