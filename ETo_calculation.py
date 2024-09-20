@@ -10,7 +10,7 @@ from time import *
 
 
 def main():
-    year = 2016
+    year = 2000
     daily_file_d = r""
     t2m_max_min_d = r""
     DNN_daily_ET = r""
@@ -79,7 +79,7 @@ def main():
         ssrd_data = gdal.Open(ssrd_list[i]).ReadAsArray()
         Nodata_value = 0
 
-        out_name = out_d + "\\ET0\\ET0" + str(year) + str(doy).zfill(3) + "_ERA5.tif"
+        out_name = out_d + ""
         Write_Tiff_optimize(out_name, PE_OK, Ta.shape[1], Ta.shape[0], geoTran[0], geoTran[3], geoTran[1], Nodata_value)
 
         print(1)
