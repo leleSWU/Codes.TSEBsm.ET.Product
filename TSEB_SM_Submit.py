@@ -218,20 +218,6 @@ def TSEB_SM(
     n_iterations : int
         number of iterations until convergence of L.
 
-    References
-    ----------
-    .. [Norman1995] J.M. Norman, W.P. Kustas, K.S. Humes, Source approach for estimating
-        soil and vegetation energy fluxes in observations of directional radiometric
-        surface temperature, Agricultural and Forest Meteorology, Volume 77, Issues 3-4,
-        Pages 263-293,
-        http://dx.doi.org/10.1016/0168-1923(95)02265-Y.
-    .. [Kustas1999] William P Kustas, John M Norman, Evaluation of soil and vegetation heat
-        flux predictions using a simple two-source model with radiometric temperatures for
-        partial canopy cover, Agricultural and Forest Meteorology, Volume 94, Issue 1,
-        Pages 13-29,
-        http://dx.doi.org/10.1016/S0168-1923(99)00005-2.
-    '''
-
     # Convert input float scalars to arrays and parameters size
     Tr_K = np.asarray(Tr_K)
     (vza,
@@ -332,7 +318,6 @@ def TSEB_SM(
     # First assume that canopy temperature equals the minumum of Air or
     # radiometric T
     T_C = np.asarray(np.minimum(Tr_K, T_A_K))
-    # flag, T_S = calc_T_S(Tr_K, T_C, f_theta)
     flag, T_S = calc_T_S_SM(Tr_K, T_A_K, f_theta, T_C)
     # Outer loop for estimating stability.
     # Stops when difference in consecutives L is below a given threshold
@@ -394,11 +379,6 @@ def TSEB_SM(
             H_C[i] = calc_H_C_SM(delta_Rn[i], f_g[i], T_A_K[i], p[i], c_p[i], alpha_PT_rec[i], veg_stress[i])
             T_C[i] = CT.CalcT_C_Series(Tr_K[i], T_A_K[i], R_A[i], R_x[i], R_S[i], f_theta[i], H_C[i], rho[i], c_p[i])
 
-            # Calculate soil temperature
-            # flag_t = np.zeros(flag.shape)
-            # flag_t[i], T_S[i] = calc_T_S(Tr_K[i], T_C[i], f_theta[i])
-            # flag[flag_t == 255] = 255
-            # LE_S[flag_t == 255] = 0
             G[i] = calc_G([calcG_params[0], calcG_array], Rn_S, i)
           
             H_S[i] = CalcH_S_PT(Rn_S[i], G[i], f_g[i], T_A_K[i], p[i], c_p[i], alpha_PT[i], soil_stress[i])
@@ -415,8 +395,6 @@ def TSEB_SM(
                           "res_params": params}
             _, _, R_S[i] = calc_resistances(resistance_form, {"R_S": R_S_params})
         
-            # j = LAI < 0.5
-            # R_S[j] = CS.calc_R_S_Haghighi(u[j], f_c[j], rho[j], c_p[j], w_C[j], z_u[j], z_w=2.99, z_0s=0.01)
             i = np.logical_and.reduce(
                 (LE_S < 0, L_diff >= L_thres, flag != 255))
 
